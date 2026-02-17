@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bpggaxh3odisy"]
+
+[ext_resource type="Script" path="res://object/pile/pile.gd" id="1_w70cj"]
+
+[node name="Pile" type="Panel"]
+custom_minimum_size = Vector2(200, 300)
+script = ExtResource("1_w70cj")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

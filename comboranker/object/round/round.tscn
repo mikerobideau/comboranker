@@ -1,0 +1,91 @@
+[gd_scene load_steps=5 format=3 uid="uid://yu2neoatqriv"]
+
+[ext_resource type="Script" path="res://object/round/round.gd" id="1_y8k5b"]
+[ext_resource type="Script" path="res://object/deck/deck.gd" id="2_8wtfa"]
+[ext_resource type="PackedScene" uid="uid://bpggaxh3odisy" path="res://object/pile/pile.tscn" id="2_pc7h5"]
+[ext_resource type="Script" path="res://object/pile/pile.gd" id="3_vsq3r"]
+
+[node name="Round" type="Control"]
+custom_minimum_size = Vector2(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("1_y8k5b")
+
+[node name="Main" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -650.0
+offset_top = -402.0
+offset_right = 650.0
+offset_bottom = 402.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TopRowMargin" type="MarginContainer" parent="Main"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="TopRow" type="HBoxContainer" parent="Main/TopRowMargin"]
+custom_minimum_size = Vector2(100, 300)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Pile1" parent="Main/TopRowMargin/TopRow" instance=ExtResource("2_pc7h5")]
+layout_mode = 2
+
+[node name="Pile2" parent="Main/TopRowMargin/TopRow" instance=ExtResource("2_pc7h5")]
+layout_mode = 2
+
+[node name="Pile3" parent="Main/TopRowMargin/TopRow" instance=ExtResource("2_pc7h5")]
+layout_mode = 2
+
+[node name="Pile4" parent="Main/TopRowMargin/TopRow" instance=ExtResource("2_pc7h5")]
+layout_mode = 2
+
+[node name="BottomRowMargin" type="MarginContainer" parent="Main"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="BottomRow" type="HBoxContainer" parent="Main/BottomRowMargin"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="Pile1" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+script = ExtResource("3_vsq3r")
+
+[node name="Pile2" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+script = ExtResource("3_vsq3r")
+
+[node name="Pile3" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+script = ExtResource("3_vsq3r")
+
+[node name="Pile4" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+script = ExtResource("3_vsq3r")
+
+[node name="Deck" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+script = ExtResource("2_8wtfa")
