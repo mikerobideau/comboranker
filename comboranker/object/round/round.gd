@@ -40,8 +40,12 @@ func deal() -> void:
 
 func on_card_clicked(card: Card) -> void:
 	var pile = card.get_parent()
+	if pile.is_discard:
+		on_discard_pile_clicked(pile)
+		return
 	if pile.is_board:
 		on_top_pile_clicked(pile)
+		return
 	else:
 		selected_card = card
 	
