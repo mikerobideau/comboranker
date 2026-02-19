@@ -19,8 +19,6 @@ class_name Round
 var selected_card: Card
 
 func _ready() -> void:
-	if score:
-		score.update_label()
 	piles = [pile1, pile2, pile3, pile4]
 	top_piles = [top_pile1, top_pile2, top_pile3, top_pile4]
 	for pile in top_piles:
@@ -41,5 +39,6 @@ func on_card_clicked(card: Card) -> void:
 func on_pile_clicked(pile: Pile) -> void:
 	if selected_card:
 		pile.add(selected_card)
+		score.add_combo(1)
 		score.add(selected_card.rank)
 		selected_card = null

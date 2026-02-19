@@ -1,17 +1,23 @@
 extends Control
 class_name Score
 
-@onready var label = $Text
+@onready var combo_label = $HBox/Combo
+@onready var score_label = $HBox/Score
 
 var score := 0
+var combo := 0
 
 func _ready() -> void:
-	if label:
-		update_label()
+	update_labels()
 	
-func add(new_score: int) -> void:
-	score += new_score
-	update_label()
+func add_combo(value: int) -> void:
+	combo += value
+	update_labels()
 	
-func update_label() -> void:
-	label.text = str(score)
+func add(value: int) -> void:
+	score += (combo * value)
+	update_labels()
+	
+func update_labels() -> void:
+	combo_label.text = str(combo)
+	score_label.text = str(score)
