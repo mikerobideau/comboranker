@@ -3,6 +3,8 @@ class_name Pile
 
 signal clicked(pile: Pile)
 
+var is_board = false
+
 func add(card: Card) -> void:
 	if card.get_parent():
 		card.get_parent().remove_child(card)
