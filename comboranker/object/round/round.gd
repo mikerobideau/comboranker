@@ -1,6 +1,7 @@
 extends Control
 class_name Round
 
+@onready var score = $Score
 @onready var top_row = $Main/TopRowMargin/TopRow
 @onready var bottom_row = $Main/BottomRowMargin/BottomRow
 @onready var deck = $Main/BottomRowMargin/BottomRow/Deck
@@ -18,6 +19,8 @@ class_name Round
 var selected_card: Card
 
 func _ready() -> void:
+	if score:
+		score.update_label()
 	piles = [pile1, pile2, pile3, pile4]
 	top_piles = [top_pile1, top_pile2, top_pile3, top_pile4]
 	for pile in top_piles:
@@ -33,12 +36,10 @@ func deal() -> void:
 		pile.add(card)
 
 func on_card_clicked(card: Card) -> void:
-	print_debug('card selected')
 	selected_card = card
 
 func on_pile_clicked(pile: Pile) -> void:
-	print_debug('pile clicked')
 	if selected_card:
-		print_debug('adding card')
 		pile.add(selected_card)
+		score.add(selected_card.rank)
 		selected_card = null
