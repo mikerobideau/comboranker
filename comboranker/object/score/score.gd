@@ -14,6 +14,10 @@ func add_combo(value: int) -> void:
 	combo += value
 	update_labels()
 	
+func reset_combo() -> void:
+	combo = 0
+	update_labels()
+	
 func add(value: int) -> void:
 	score += (combo * value)
 	update_labels()

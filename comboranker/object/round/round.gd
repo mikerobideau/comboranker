@@ -9,6 +9,7 @@ class_name Round
 @onready var top_pile2 = $Main/TopRowMargin/TopRow/Pile2
 @onready var top_pile3 = $Main/TopRowMargin/TopRow/Pile3
 @onready var top_pile4 = $Main/TopRowMargin/TopRow/Pile4
+@onready var discard_pile = $Main/TopRowMargin/TopRow/Discard
 @onready var top_piles: Array[Pile]
 @onready var pile1 = $Main/BottomRowMargin/BottomRow/Pile1
 @onready var pile2 = $Main/BottomRowMargin/BottomRow/Pile2
@@ -23,7 +24,10 @@ func _ready() -> void:
 	top_piles = [top_pile1, top_pile2, top_pile3, top_pile4]
 	for pile in top_piles:
 		pile.is_board = true
-		pile.clicked.connect(on_pile_clicked)
+		pile.clicked.connect(on_top_pile_clicked)
+	discard_pile.is_discard = true
+	discard_pile.clicked.connect(on_discard_pile_clicked)
+	discard_pile.is_board = true
 	deck.card_clicked.connect(on_card_clicked)
 	deck.shuffle()
 	deal()
@@ -37,13 +41,18 @@ func deal() -> void:
 func on_card_clicked(card: Card) -> void:
 	var pile = card.get_parent()
 	if pile.is_board:
-		on_pile_clicked(pile)
+		on_top_pile_clicked(pile)
 	else:
 		selected_card = card
 	
-func on_pile_clicked(pile: Pile) -> void:
+func on_top_pile_clicked(pile: Pile) -> void:
 	if selected_card:
 		pile.add(selected_card)
 		score.add_combo(1)
 		score.add(selected_card.rank)
 		selected_card = null
+		
+func on_discard_pile_clicked(pile: Pile) -> void:
+	if selected_card:
+		pile.add(selected_card)
+		score.reset_combo()
