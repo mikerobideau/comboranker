@@ -1,6 +1,7 @@
 extends Control
 class_name Round
 
+@onready var sound = $Sound
 @onready var score = $Score
 @onready var top_row = $Main/TopRowMargin/TopRow
 @onready var bottom_row = $Main/BottomRowMargin/BottomRow
@@ -51,6 +52,7 @@ func on_card_clicked(card: Card) -> void:
 	
 func on_top_pile_clicked(pile: Pile) -> void:
 	if selected_card and is_valid_move(pile.get_top_card()):
+		sound.note_c()
 		pile.add(selected_card)
 		score.add_combo(1)
 		score.add(selected_card.rank)
@@ -73,4 +75,3 @@ func is_valid_move(top_card: Card) -> bool:
 	if selected_card.rank == Constants.LOWEST_RANK and top_card.rank == Constants.HIGHEST_RANK:
 		return true	
 	return false
-	
