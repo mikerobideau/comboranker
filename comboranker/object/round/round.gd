@@ -50,7 +50,7 @@ func on_card_clicked(card: Card) -> void:
 		selected_card = card
 	
 func on_top_pile_clicked(pile: Pile) -> void:
-	if selected_card:
+	if selected_card and is_valid_move(pile.get_top_card()):
 		pile.add(selected_card)
 		score.add_combo(1)
 		score.add(selected_card.rank)
@@ -60,3 +60,17 @@ func on_discard_pile_clicked(pile: Pile) -> void:
 	if selected_card:
 		pile.add(selected_card)
 		score.reset_combo()
+		
+func is_valid_move(top_card: Card) -> bool:
+	if !top_card:
+		return true
+	var min = top_card.rank - 1
+	var max = top_card.rank + 1
+	if selected_card.rank >= min and selected_card.rank <= max:
+		return true
+	if selected_card.rank == Constants.HIGHEST_RANK and top_card.rank == Constants.LOWEST_RANK:
+		return true
+	if selected_card.rank == Constants.LOWEST_RANK and top_card.rank == Constants.HIGHEST_RANK:
+		return true	
+	return false
+	

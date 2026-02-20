@@ -14,5 +14,7 @@ func add(card: Card) -> void:
 func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
-			print_debug('clicked')
 			clicked.emit(self)
+			
+func get_top_card() -> Card:
+	return get_child(get_child_count() - 1)

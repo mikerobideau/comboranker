@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://object/pile/pile.gd" id="3_vsq3r"]
 
 [node name="Round" type="Control"]
-custom_minimum_size = Vector2(2560, 1440)
+custom_minimum_size = Vector2(1920, 1080)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0

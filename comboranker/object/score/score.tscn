@@ -2,27 +2,26 @@
 
 [ext_resource type="Script" path="res://object/score/score.gd" id="1_np0it"]
 
-[node name="Score" type="Control"]
-custom_minimum_size = Vector2(200, 50)
-layout_mode = 3
-anchors_preset = 0
+[node name="Score" type="MarginContainer"]
+offset_right = 146.0
+offset_bottom = 210.0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
 script = ExtResource("1_np0it")
 
 [node name="HBox" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 10
-anchor_right = 1.0
-offset_right = -59.0
-offset_bottom = 45.0
-grow_horizontal = 2
+layout_mode = 2
 theme_override_constants/separation = 100
 
 [node name="Combo" type="Label" parent="HBox"]
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 text = "0"
 
 [node name="Score" type="Label" parent="HBox"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 100
 text = "0"
