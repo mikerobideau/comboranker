@@ -19,6 +19,7 @@ class_name Round
 @onready var piles: Array[Pile]
 
 var selected_card: Card
+var effect_context: EffectContext
 
 func _ready() -> void:
 	piles = [pile1, pile2, pile3, pile4]
@@ -32,6 +33,7 @@ func _ready() -> void:
 	deck.card_clicked.connect(on_card_clicked)
 	deck.shuffle()
 	deal()
+	effect_context = get_effect_context()
 	 
 func deal() -> void:
 	for i in range(deck.cards.size()):
@@ -75,3 +77,8 @@ func is_valid_move(top_card: Card) -> bool:
 	if selected_card.rank == Constants.LOWEST_RANK and top_card.rank == Constants.HIGHEST_RANK:
 		return true	
 	return false
+	
+func get_effect_context() -> EffectContext:
+	var effect_context = effect_context.new()
+	effect_context.score = score
+	return effect_context
