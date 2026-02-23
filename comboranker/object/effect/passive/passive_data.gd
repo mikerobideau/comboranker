@@ -2,7 +2,7 @@ extends Resource
 class_name PassiveData
 
 enum Trigger {
-	CardPlayed
+	CARD_PLAYED
 }
 
 @export var name: String

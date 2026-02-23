@@ -16,10 +16,14 @@ layout_mode = 2
 theme_override_constants/separation = 100
 
 [node name="Combo" type="Label" parent="HBox"]
-visible = false
 layout_mode = 2
-theme_override_font_sizes/font_size = 32
+theme_override_font_sizes/font_size = 100
 text = "0"
+
+[node name="-" type="Label" parent="HBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 60
+text = "-"
 
 [node name="Score" type="Label" parent="HBox"]
 layout_mode = 2

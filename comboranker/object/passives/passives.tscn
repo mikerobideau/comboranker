@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://br1o7tt7ptebo"]
+
+[ext_resource type="Script" path="res://object/passives/passives.gd" id="1_8rfck"]
+
+[node name="Passives" type="MarginContainer"]
+theme_override_constants/margin_left = 25
+theme_override_constants/margin_top = 25
+theme_override_constants/margin_right = 25
+theme_override_constants/margin_bottom = 25
+script = ExtResource("1_8rfck")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2

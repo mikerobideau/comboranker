@@ -2,6 +2,7 @@ extends Control
 class_name Round
 
 @onready var sound = $Sound
+@onready var passives = $Passives
 @onready var score = $Score
 @onready var top_row = $Main/TopRowMargin/TopRow
 @onready var bottom_row = $Main/BottomRowMargin/BottomRow
@@ -20,6 +21,7 @@ class_name Round
 
 var selected_card: Card
 var effect_context: EffectContext
+var event_manager := EventManager.new()
 
 func _ready() -> void:
 	piles = [pile1, pile2, pile3, pile4]
@@ -55,11 +57,11 @@ func on_card_clicked(card: Card) -> void:
 func on_top_pile_clicked(pile: Pile) -> void:
 	if selected_card and is_valid_move(pile.get_top_card()):
 		sound.note_c()
+		event_manager.card_played(passives.all(), effect_context)
 		pile.add(selected_card)
-		score.add_combo(1)
 		score.add(selected_card.rank)
 		selected_card = null
-		
+
 func on_discard_pile_clicked(pile: Pile) -> void:
 	if selected_card:
 		pile.add(selected_card)
@@ -79,6 +81,6 @@ func is_valid_move(top_card: Card) -> bool:
 	return false
 	
 func get_effect_context() -> EffectContext:
-	var effect_context = effect_context.new()
+	var effect_context = EffectContext.new()
 	effect_context.score = score
 	return effect_context
