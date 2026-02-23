@@ -57,9 +57,8 @@ func on_card_clicked(card: Card) -> void:
 func on_top_pile_clicked(pile: Pile) -> void:
 	if selected_card and is_valid_move(pile.get_top_card()):
 		sound.note_c()
-		event_manager.card_played(passives.all(), effect_context)
 		pile.add(selected_card)
-		score.add(selected_card.rank)
+		play_card(selected_card)
 		selected_card = null
 
 func on_discard_pile_clicked(pile: Pile) -> void:
@@ -84,3 +83,14 @@ func get_effect_context() -> EffectContext:
 	var effect_context = EffectContext.new()
 	effect_context.score = score
 	return effect_context
+	
+func play_card(card: Card) -> void:
+	#Step 1 Card effect
+	if card.resolver:
+		card.resolver.resolve(effect_context)
+	
+	#Step 2: Passive Effects 
+	event_manager.card_played(passives.all(), effect_context)
+	
+	#Step 3: Score
+	score.add(card.rank)

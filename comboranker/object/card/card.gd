@@ -21,9 +21,11 @@ const SUIT_NAMES = {
 	SUIT.SPADES: 'Spades'
 }
 
+
+var data: CardData
 var rank: int
 var suit: SUIT
-var data: CardData
+var resolver: Resolver
 
 func _ready() -> void:
 	update_labels()
@@ -37,6 +39,9 @@ func set_data(data: CardData) -> void:
 	self.data = data
 	rank = data.rank
 	suit = data.suit
+	
+func set_resolver(resolver: Resolver) -> void:
+	self.resolver = resolver
 
 func update_labels() -> void:
 	var rank_label = get_rank_label(rank)

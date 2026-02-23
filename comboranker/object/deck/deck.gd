@@ -17,6 +17,12 @@ func populate() -> void:
 			data.rank = rank
 			data.suit = suit
 			var card = factory.create(data)
+			
+			#TODO: Remove test resolver
+			#var resolver = AddComboResolver.new()
+			#resolver.amount = 1
+			#card.resolver = resolver
+			
 			cards.append(card)
 			card.clicked.connect(on_card_clicked)
 

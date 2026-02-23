@@ -8,7 +8,7 @@ var passives: Array[PassiveData]
 var factory = PassiveFactory.new()
 
 func _ready() -> void:
-	passives = [snake_eyes]
+	passives = []
 	populate()
 	
 func populate() -> void:
