@@ -24,18 +24,30 @@ var effect_context: EffectContext
 var event_manager := EventManager.new()
 
 func _ready() -> void:
-	piles = [pile1, pile2, pile3, pile4]
-	top_piles = [top_pile1, top_pile2, top_pile3, top_pile4]
-	for pile in top_piles:
-		pile.is_board = true
-		pile.clicked.connect(on_top_pile_clicked)
+	init_top_piles()
+	init_bottom_piles()
+	init_discard_pile()
+	deck.card_clicked.connect(on_card_clicked)
+	deck.shuffle()
+	effect_context = get_effect_context()
+	deal()
+
+func init_discard_pile() -> void:
 	discard_pile.is_discard = true
 	discard_pile.clicked.connect(on_discard_pile_clicked)
 	discard_pile.is_board = true
-	deck.card_clicked.connect(on_card_clicked)
-	deck.shuffle()
-	deal()
-	effect_context = get_effect_context()
+	
+func init_top_piles() -> void:
+	top_piles = [top_pile1, top_pile2, top_pile3, top_pile4]
+	for pile in top_piles:
+		pile.set_has_validator(true)
+	
+func init_bottom_piles() -> void:
+	piles = [pile1, pile2, pile3, pile4]
+	for pile in top_piles:
+		pile.is_board = true
+		pile.clicked.connect(on_top_pile_clicked)
+		pile.set_has_validator(false)
 	 
 func deal() -> void:
 	for i in range(deck.cards.size()):

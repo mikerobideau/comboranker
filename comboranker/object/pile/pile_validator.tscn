@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://b6t6226w3un16"]
+
+[ext_resource type="Script" path="res://object/pile/pile_validator.gd" id="1_fqo3l"]
+
+[node name="PileValidator" type="Panel"]
+custom_minimum_size = Vector2(200, 100)
+script = ExtResource("1_fqo3l")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.5
+offset_top = -11.5
+offset_right = 35.5
+offset_bottom = 11.5
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1

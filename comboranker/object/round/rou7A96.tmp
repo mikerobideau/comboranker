@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://yu2neoatqriv"]
+[gd_scene load_steps=8 format=3 uid="uid://yu2neoatqriv"]
 
 [ext_resource type="Script" path="res://object/round/round.gd" id="1_y8k5b"]
 [ext_resource type="PackedScene" uid="uid://bacelsrts6k5h" path="res://object/sound/sound.tscn" id="2_5pg1h"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c0xd41d02jlgu" path="res://object/score/score.tscn" id="2_a38p5"]
 [ext_resource type="PackedScene" uid="uid://bpggaxh3odisy" path="res://object/pile/pile.tscn" id="2_pc7h5"]
 [ext_resource type="PackedScene" uid="uid://br1o7tt7ptebo" path="res://object/passives/passives.tscn" id="3_o0y0j"]
+[ext_resource type="Script" path="res://object/pile/pile.gd" id="3_vsq3r"]
 
 [node name="Round" type="Control"]
 custom_minimum_size = Vector2(2560, 1440)
@@ -87,17 +88,25 @@ custom_minimum_size = Vector2(0, 300)
 layout_mode = 2
 theme_override_constants/separation = 50
 
-[node name="Pile1" parent="Main/BottomRowMargin/BottomRow" instance=ExtResource("2_pc7h5")]
+[node name="Pile1" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
+script = ExtResource("3_vsq3r")
 
-[node name="Pile2" parent="Main/BottomRowMargin/BottomRow" instance=ExtResource("2_pc7h5")]
+[node name="Pile2" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
+script = ExtResource("3_vsq3r")
 
-[node name="Pile3" parent="Main/BottomRowMargin/BottomRow" instance=ExtResource("2_pc7h5")]
+[node name="Pile3" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
+script = ExtResource("3_vsq3r")
 
-[node name="Pile4" parent="Main/BottomRowMargin/BottomRow" instance=ExtResource("2_pc7h5")]
+[node name="Pile4" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
+custom_minimum_size = Vector2(200, 300)
 layout_mode = 2
+script = ExtResource("3_vsq3r")
 
 [node name="Deck" type="Panel" parent="Main/BottomRowMargin/BottomRow"]
 custom_minimum_size = Vector2(200, 300)

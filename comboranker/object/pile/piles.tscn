@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw15p3dvo4wcd"]
+
+[ext_resource type="Script" path="res://object/pile/piles.gd" id="1_p1lk6"]
+
+[node name="Piles" type="MarginContainer"]
+script = ExtResource("1_p1lk6")
+
+[node name="HBox" type="HBoxContainer" parent="."]
+layout_mode = 2
