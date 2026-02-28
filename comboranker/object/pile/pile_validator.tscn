@@ -1,9 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6t6226w3un16"]
+[gd_scene load_steps=3 format=3 uid="uid://b6t6226w3un16"]
 
 [ext_resource type="Script" path="res://object/pile/pile_validator.gd" id="1_fqo3l"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hjhwb"]
+bg_color = Color(1, 1, 1, 1)
+
 [node name="PileValidator" type="Panel"]
 custom_minimum_size = Vector2(200, 100)
+theme_override_styles/panel = SubResource("StyleBoxFlat_hjhwb")
 script = ExtResource("1_fqo3l")
 
 [node name="Label" type="Label" parent="."]
@@ -19,5 +23,6 @@ offset_right = 35.5
 offset_bottom = 11.5
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 horizontal_alignment = 1
 vertical_alignment = 1

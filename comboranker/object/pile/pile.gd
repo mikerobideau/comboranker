@@ -8,27 +8,26 @@ signal clicked(pile: Pile)
 
 var is_board = false
 var is_discard = false
-var has_validator = false
 	
-func _on_cards_gui_input(event: InputEvent) -> void:
+func _on_gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			clicked.emit(self)
-		
-func set_has_validator(value: bool) -> void:
-	has_validator = value
-	validator.visible = value
 
 func add(card: Card) -> void:
 	if card.get_parent():
 		card.get_parent().remove_child(card)
+	card.mouse_filter = MouseFilter.MOUSE_FILTER_PASS
 	cards.add_child(card)
 			
 func get_top_card() -> Card:
-	return cards.get_child(get_child_count() - 1)
+	var num_cards = cards.get_child_count()
+	if num_cards == 0:
+		return null
+	return cards.get_child(num_cards - 1)
 	
 func validate(card: Card) -> bool:
-	print_debug('Validating')
-	if !has_validator:
+	if !validator.visible:
 		push_warning('Pile validate() called, but has_validator is set to false')
-	return validator.validate()
+		return true
+	return validator.validate(card)

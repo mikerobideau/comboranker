@@ -17,22 +17,23 @@ enum ValidatorType {
 var active_validator: ValidatorType
 
 func _ready() -> void:
-	randomize()
+	random_validator()
 
-func validate(card: Card, validator: ValidatorType) -> bool:
-	match validator:
+func validate(card: Card) -> bool:
+	match active_validator:
 		ValidatorType.HIGH:
 			return validate_high(card)
 		_:
 			return false
 			
 func validate_high(card: Card) -> bool:
-	return card.rank >= 7
+	return card.data.rank >= 7
 	
-func randomize() -> void:
+func random_validator() -> void:
 	active_validator = ValidatorType.values().pick_random()
+	update_label()
 	
-func get_label() -> void:
+func update_label() -> void:
 	match active_validator:
 		ValidatorType.HIGH:
 			label.text = 'High'

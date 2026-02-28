@@ -5,7 +5,7 @@ class_name Score
 @onready var score_label = $HBox/Score
 
 var score := 0
-var combo := 0
+var combo := 1
 
 func _ready() -> void:
 	update_labels()
