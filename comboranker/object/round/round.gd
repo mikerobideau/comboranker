@@ -60,12 +60,12 @@ func on_bottom_pile_clicked(pile: Pile) -> void:
 	selected_card = pile.get_top_card()
 	
 func on_top_pile_clicked(pile: Pile) -> void:
-	print_debug('top pile clicked')
 	if selected_card and pile.validate(selected_card):
 		sound.note_c()
 		pile.add(selected_card)
 		play_card(selected_card)
 		selected_card = null
+		pile.random_validator()
 
 func on_discard_pile_clicked(pile: Pile) -> void:
 	if selected_card:

@@ -26,6 +26,9 @@ func get_top_card() -> Card:
 		return null
 	return cards.get_child(num_cards - 1)
 	
+func random_validator() -> void:
+	validator.random_validator()
+	
 func validate(card: Card) -> bool:
 	if validator and !validator.visible:
 		push_warning('Pile validate() called, but has_validator is set to false')
