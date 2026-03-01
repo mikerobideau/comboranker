@@ -10,6 +10,7 @@ var is_board = false
 var is_discard = false
 	
 func _on_gui_input(event: InputEvent) -> void:
+	print_debug('pile')
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			clicked.emit(self)
@@ -27,7 +28,7 @@ func get_top_card() -> Card:
 	return cards.get_child(num_cards - 1)
 	
 func validate(card: Card) -> bool:
-	if !validator.visible:
+	if validator and !validator.visible:
 		push_warning('Pile validate() called, but has_validator is set to false')
 		return true
 	return validator.validate(card)

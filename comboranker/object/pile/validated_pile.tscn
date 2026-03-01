@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bpggaxh3odisy"]
+
+[ext_resource type="Script" path="res://object/pile/pile.gd" id="1_w70cj"]
+[ext_resource type="PackedScene" uid="uid://b6t6226w3un16" path="res://object/pile/pile_validator.tscn" id="2_lqien"]
+
+[node name="Pile" type="Panel"]
+custom_minimum_size = Vector2(200, 400)
+offset_right = 200.0
+offset_bottom = 404.0
+mouse_filter = 1
+script = ExtResource("1_w70cj")
+
+[node name="PileValidator" parent="." instance=ExtResource("2_lqien")]
+layout_mode = 2
+offset_right = 200.0
+offset_bottom = 100.0
+
+[node name="Cards" type="Panel" parent="."]
+custom_minimum_size = Vector2(200, 300)
+layout_mode = 2
+offset_top = 104.0
+offset_right = 200.0
+offset_bottom = 404.0
+mouse_filter = 1
+script = ExtResource("1_w70cj")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]

@@ -2,8 +2,8 @@ extends Control
 class_name Round
 
 @onready var sound = $Sound
-@onready var passives = $Passives
-@onready var score = $Score
+@onready var passives = $Main/Passives
+@onready var score = $Main/Score
 @onready var top_row = $Main/TopRowMargin/TopRow
 @onready var bottom_row = $Main/BottomRowMargin/BottomRow
 @onready var deck = $Main/BottomRowMargin/BottomRow/Deck
@@ -35,7 +35,6 @@ func init_discard_pile() -> void:
 	discard_pile.is_discard = true
 	discard_pile.clicked.connect(on_discard_pile_clicked)
 	discard_pile.is_board = true
-	discard_pile.validator.visible = false
 	
 func init_top_piles() -> void:
 	top_piles = [top_pile1, top_pile2, top_pile3, top_pile4]
@@ -48,7 +47,6 @@ func init_bottom_piles() -> void:
 	bottom_piles = [pile1, pile2, pile3, pile4]
 	for pile in bottom_piles:
 		pile.is_board = false
-		pile.validator.visible = false
 		pile.clicked.connect(on_bottom_pile_clicked)
 	 
 func deal() -> void:
@@ -58,9 +56,11 @@ func deal() -> void:
 		pile.add(card)
 
 func on_bottom_pile_clicked(pile: Pile) -> void:
+	print_debug('card selected')
 	selected_card = pile.get_top_card()
 	
 func on_top_pile_clicked(pile: Pile) -> void:
+	print_debug('top pile clicked')
 	if selected_card and pile.validate(selected_card):
 		sound.note_c()
 		pile.add(selected_card)
