@@ -10,7 +10,6 @@ var is_board = false
 var is_discard = false
 	
 func _on_gui_input(event: InputEvent) -> void:
-	print_debug('pile')
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			clicked.emit(self)
